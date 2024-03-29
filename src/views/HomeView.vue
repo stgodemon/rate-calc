@@ -10,16 +10,19 @@ const exchangeTable = [
   { limit: 50000, rate: 0.56 },
   { limit: 100000, rate: 0.555 },
   { limit: 1000000, rate: 0.55 },
-].sort((a, b) => b.limit - a.limit)
+].sort((a, b) => a.limit - b.limit)
 
 function calc(source) {
   const price = parseInt(source, 10)
+  if (!price) {
+    return 0;
+  }
   for (const item of exchangeTable) {
     const {limit, rate, fee = 0} = item
-    if (price > limit) {
+    if (price > limit - 1) {
       continue;
     }
-    return price * rate + fee
+    return Math.floor(price * rate + fee)
   }
   return 0
 }
@@ -32,6 +35,15 @@ watch(originPrice, value => {
 </script>
 
 <template>
-  <el-input v-model="originPrice"></el-input>
-  <el-input :value="resultPrice"></el-input>
+  <el-form-item label="进货价（JPY）">
+    <el-input v-model="originPrice"></el-input>
+  </el-form-item>
+  <el-form-item label="出货价（CNY）">
+    <el-input :value="resultPrice"></el-input>
+  </el-form-item>
+  <el-table :data="exchangeTable" style="width: 100%">
+    <el-table-column prop="limit" label="进货价上限（JPY）" width="180" />
+    <el-table-column prop="rate" label="汇率" width="180" />
+    <el-table-column prop="fee" label="手续费" />
+  </el-table>
 </template>
