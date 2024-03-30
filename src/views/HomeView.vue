@@ -4,12 +4,12 @@ import { ref, watch } from 'vue'
 const resultPrice = defineModel({default: 0})
 const exchangeTable = [
   { limit: 1000, rate: 0.06, fee: 6 },
-  { limit: 5000, rate: 0.58 },
-  { limit: 10000, rate: 0.575 },
-  { limit: 30000, rate: 0.57 },
-  { limit: 50000, rate: 0.56 },
-  { limit: 100000, rate: 0.555 },
-  { limit: 1000000, rate: 0.55 },
+  { limit: 5000, rate: 0.058 },
+  { limit: 10000, rate: 0.0575 },
+  { limit: 30000, rate: 0.057 },
+  { limit: 50000, rate: 0.056 },
+  { limit: 100000, rate: 0.0555 },
+  { limit: 1000000, rate: 0.055 },
 ].sort((a, b) => a.limit - b.limit)
 
 function calc(source) {
@@ -31,7 +31,6 @@ const originPrice = ref('')
 watch(originPrice, value => {
   resultPrice.value = calc(value)
 })
-// const resultPrice = calc(originPrice)
 </script>
 
 <template>
