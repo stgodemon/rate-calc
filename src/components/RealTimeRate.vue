@@ -14,7 +14,7 @@ defineProps({
 <template>
     <el-card class="box-card">
         <template #header>
-            <el-text size="large" class="card-header">实时汇率</el-text>
+            <el-text size="large" class="card-header">实时参考汇率</el-text>
         </template>
         <div v-if="rate">
             <el-row style="align-items: center;">
@@ -23,6 +23,9 @@ defineProps({
             </el-row>
             <el-row class="box-card">
                 <el-text size="small" style="color: #a6a9ad">更新时间：{{new Date(updateTime)}}</el-text>
+            </el-row>
+            <el-row class="box-card">
+                <el-link icon="link" type="primary" href="https://www.kylc.com/huilv/d-unionpay-jpy.html" target="_blank">查看银联精确汇率</el-link>
             </el-row>
         </div>
         <div v-else>
