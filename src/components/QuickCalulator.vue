@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
+import { useTransition } from '@vueuse/core'
 
 const props = defineProps({
   policy: Object,
@@ -32,6 +33,14 @@ watch(originPrice, value => {
   sellingPrice.value = price;
   resultProfit.value = profit;
 })
+
+const outputPrice = useTransition(sellingPrice, {
+  duration: 200,
+});
+const outputProfit = useTransition(resultProfit, {
+  duration: 200,
+})
+
 </script>
 <template>
   <el-card>
@@ -44,10 +53,10 @@ watch(originPrice, value => {
       </el-input>
     </el-form-item>
     <el-space wrap size="large">
-      <el-statistic title="出货价" :value="sellingPrice">
+      <el-statistic title="出货价" :value="outputPrice">
       <template #suffix> <el-text size="small">CNY</el-text></template>
     </el-statistic>
-    <el-statistic title="估算利润" :value="resultProfit">
+    <el-statistic title="估算利润" :value="outputProfit">
       <template #suffix> <el-text size="small">JPY</el-text></template>
     </el-statistic>
     </el-space>
