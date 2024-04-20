@@ -43,17 +43,13 @@ watch(originPrice, value => {
         <template #append>JPY￥</template>
       </el-input>
     </el-form-item>
-    <el-row>
-      <el-col :span="12">
-        <el-statistic title="出货价" :value="sellingPrice">
-          <template #suffix> <el-text size="small">CNY</el-text></template>
-        </el-statistic>
-      </el-col>
-      <el-col :span="12">
-        <el-statistic title="估算利润" :value="resultProfit">
-          <template #suffix> <el-text size="small">JPY</el-text></template>
-        </el-statistic>
-      </el-col>
-    </el-row>
+    <el-space wrap size="large">
+      <el-statistic title="出货价" :value="sellingPrice">
+      <template #suffix> <el-text size="small">CNY</el-text></template>
+    </el-statistic>
+    <el-statistic title="估算利润" :value="resultProfit">
+      <template #suffix> <el-text size="small">JPY</el-text></template>
+    </el-statistic>
+    </el-space>
   </el-card>
 </template>
