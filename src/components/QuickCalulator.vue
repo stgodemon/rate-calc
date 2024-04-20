@@ -3,29 +3,34 @@ import { ref, watch } from 'vue'
 
 const props = defineProps({
   policy: Object,
+  rate: Number,
 })
-
 const exchangeTable = props.policy;
-const resultPrice = defineModel({default: 0})
+const sellingPrice = defineModel('sellingPrice', {default: 0});
+const resultProfit = defineModel('resultProfit', {default: 0});
 
 function calc(source) {
   const price = parseInt(source, 10)
   if (!price) {
-    return 0;
+    return [0, 0];
   }
   for (const item of exchangeTable) {
     const {limit, rate, fee = 0} = item
     if (price > limit - 1) {
       continue;
     }
-    return Math.floor(price * rate + fee)
+    const sellingPrice = Math.floor(price * rate + fee);
+    const profit = Math.floor(props.rate ? (price * rate - price * props.rate + fee) / props.rate : 0);
+    return [sellingPrice, profit];
   }
-  return 0
+  return [0, 0];
 }
 const originPrice = ref('')
 
 watch(originPrice, value => {
-  resultPrice.value = calc(value)
+  const [price, profit] = calc(value);
+  sellingPrice.value = price;
+  resultProfit.value = profit;
 })
 </script>
 <template>
@@ -37,7 +42,10 @@ watch(originPrice, value => {
       <el-input v-model="originPrice"></el-input>
     </el-form-item>
     <el-form-item label="出货价（CNY）">
-      <el-input :value="resultPrice" readonly></el-input>
+      <el-input :value="sellingPrice" readonly></el-input>
+    </el-form-item>
+    <el-form-item label="利润（JPY）">
+      <el-input :value="resultProfit" readonly></el-input>
     </el-form-item>
   </el-card>
 </template>
