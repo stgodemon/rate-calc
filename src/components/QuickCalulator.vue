@@ -48,7 +48,7 @@ const outputProfit = useTransition(resultProfit, {
       <el-text size="large" class="card-header">速算</el-text>
     </template>
     <el-form-item label="进货价">
-      <el-input v-model="originPrice">
+      <el-input v-model="originPrice" type="number">
         <template #append>JPY￥</template>
       </el-input>
     </el-form-item>
