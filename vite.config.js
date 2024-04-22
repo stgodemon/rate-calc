@@ -19,8 +19,8 @@ export default defineConfig({
         enabled: true
       },
       manifest: {
-        "theme_color": "#030030",
-        "background_color": "#030030",
+        "theme_color": "#fff",
+        "background_color": "#fff",
         "display": "standalone",
         "scope": "/",
         "start_url": "/rate-calc",
