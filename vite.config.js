@@ -23,7 +23,7 @@ export default defineConfig({
         "background_color": "#030030",
         "display": "standalone",
         "scope": "/",
-        "start_url": "/",
+        "start_url": "/rate-calc",
         "short_name": "StarGrass Assistant",
         "description": "StarGrass Assistant",
         "name": "StarGrass Assistant",
