@@ -13,8 +13,14 @@ export default defineConfig({
       registerType: 'autoUpdate',
       workbox: {
         clientsClaim: true,
-        skipWaiting: true
+        skipWaiting: true,
+        globPatterns: ["**/*"],
       },
+      // add this to cache all the
+      // static assets in the public folder
+      includeAssets: [
+          "**/*",
+      ],
       devOptions: {
         enabled: true
       },
