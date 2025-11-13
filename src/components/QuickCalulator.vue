@@ -202,6 +202,7 @@ function formatMoney2(v) {
       <el-input
         v-model="manualRate"
         type="number"
+        step="0.0001"
         placeholder="不填或填错则使用实时汇率"
       >
         <template #append>CNY / JPY</template>
