@@ -235,13 +235,13 @@ function formatMoney2(v) {
           <!-- 第一行：商品价格 / 折扣设置 / 手动代购买价输入 -->
           <tr>
             <th style="text-align: left; padding: 4px 8px;">
-              商品价格（JPY）/ 设置折扣率
+              商品价格/折扣率
             </th>
 
             <!-- 无折扣：进货价 -->
             <td style="padding: 4px 8px;">
               <el-input v-model="originPrice" type="number" size="small">
-                <template #append>JPY</template>
+                
               </el-input>
             </td>
 
@@ -253,7 +253,7 @@ function formatMoney2(v) {
                 size="small"
                 placeholder="如 98"
               >
-                <template #append>折</template>
+                
               </el-input>
             </td>
 
@@ -265,7 +265,7 @@ function formatMoney2(v) {
                 size="small"
                 placeholder="如 97"
               >
-                <template #append>折</template>
+                
               </el-input>
             </td>
 
@@ -276,7 +276,7 @@ function formatMoney2(v) {
                 disabled
                 size="small"
               >
-              <template #append>JPY</template>
+              
             </el-input>
             </td>
           </tr>
