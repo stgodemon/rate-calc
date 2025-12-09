@@ -29,8 +29,8 @@ const effectiveRate = computed(() => {
 })
 
 // —— 折扣率（用户输入 98 / 97 这种） —— //
-const discountRate1 = ref('98')
-const discountRate2 = ref('97')
+const discountRate1 = ref('97')
+const discountRate2 = ref('96')
 
 // 把输入转成折扣系数：
 //  - 98 → 0.98
