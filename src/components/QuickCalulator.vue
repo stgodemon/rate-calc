@@ -17,7 +17,7 @@ const resultProfit = defineModel('resultProfit', { default: 0 })
 const originPrice = ref('')
 
 // 本月结算汇率（手动输入）
-const manualRate = ref('0.0469')
+const manualRate = ref('0.0460')
 
 // 实际用于“成本”计算的汇率（CNY/JPY）
 const effectiveRate = computed(() => {
@@ -29,8 +29,8 @@ const effectiveRate = computed(() => {
 })
 
 // —— 折扣率（用户输入 98 / 97 这种） —— //
-const discountRate1 = ref('97')
-const discountRate2 = ref('96')
+const discountRate1 = ref('96')
+const discountRate2 = ref('95')
 
 // 把输入转成折扣系数：
 //  - 98 → 0.98
